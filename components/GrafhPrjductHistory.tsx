@@ -9,9 +9,18 @@ import {
     Tooltip,
     Legend,
     ResponsiveContainer,
+    TooltipProps,
 } from "recharts";
 import { ProductHistory } from "@/types/types";
 import { formattedDate } from "@/utils/formattedDate";
+
+interface DataPoint {
+    price: number;
+    date: string;
+}
+interface CustomTooltipProps extends TooltipProps<number, string> {
+    payload?: { payload: DataPoint }[];
+}
 
 const GraphProductHistory = ({ data }: { data: ProductHistory[] }) => {
     const chartData = data.reduce<{ price: number; date: string }[]>(
@@ -35,7 +44,10 @@ const GraphProductHistory = ({ data }: { data: ProductHistory[] }) => {
             </p>
         );
     }
-    const CustomTooltip = ({ active, payload }: any) => {
+    const CustomTooltip: React.FC<CustomTooltipProps> = ({
+        active,
+        payload,
+    }) => {
         if (active && payload && payload.length) {
             const { price, date } = payload[0].payload;
             return (
