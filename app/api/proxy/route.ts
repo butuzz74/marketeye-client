@@ -10,8 +10,8 @@ export async function GET(request: NextRequest) {
         const response = fetch(
             `http://31.129.33.170:4001/${endpoint}?product=${product}&supplierId=${supplierId}`
         );
-        const result = (await response).json();
-        return NextResponse.json(result);
+
+        return NextResponse.json(response);
     } catch (error) {
         return NextResponse.json(
             { message: "Ошибка сервера" },
