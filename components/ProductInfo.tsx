@@ -40,7 +40,8 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
     ) => {
         try {
             const response = await fetch(
-                `${process.env.NEXT_PUBLIC_BASE_URL}/api/productHistory?productId=${productId}&supplierId=${supplierId}`
+                `${process.env.NEXT_PUBLIC_BASE_URL}/api/productHistory?productId=${productId}&supplierId=${supplierId}`,
+                { cache: "no-store" }
             );
 
             if (!response.ok) {
@@ -67,7 +68,8 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
             if (!selectedProduct) {
                 const timeout = setTimeout(() => {
                     fetch(
-                        `${process.env.NEXT_PUBLIC_BASE_URL}/api/product?product=${product}&supplierId=${value}`
+                        `${process.env.NEXT_PUBLIC_BASE_URL}/api/product?product=${product}&supplierId=${value}`,
+                        { cache: "no-store" }
                     )
                         .then((res) => res.json())
                         .then((data) => {

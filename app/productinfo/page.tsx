@@ -2,7 +2,9 @@ import { Supplier } from "@/types/types";
 import ProductInfo from "@/components/ProductInfo";
 
 async function ProductInfoPage() {
-    const responseSuppliers = await fetch(`${process.env.API_URL}/supplier`);
+    const responseSuppliers = await fetch(`${process.env.API_URL}/supplier`, {
+        cache: "no-store",
+    });
     if (responseSuppliers.status === 500)
         throw new Error(
             `Ошибка ${responseSuppliers.status} - ${responseSuppliers.statusText}`

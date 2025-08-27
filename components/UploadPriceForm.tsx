@@ -24,7 +24,6 @@ function UploadPriceForm({ action, suppliers }: ServerActionUploadPrice) {
             setValue(newOption.name);
         }, 500);
     };
-    console.log(suppliers);
 
     return (
         <form action={formAction} className="space-y-6">
