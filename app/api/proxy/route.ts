@@ -1,31 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 
-type QueryParams = {
-    [key: string]: string;
-};
-
-export default async function handler(req: NextRequest) {
-    const queryParams: QueryParams = {};
-    const { searchParams } = new URL(req.url);
+export async function GET(request: NextRequest) {
+    const { searchParams } = new URL(request.url);
     const endpoint = searchParams.get("endpoint");
     const product = searchParams.get("product");
     const supplierId = searchParams.get("supplierId");
 
-    if (product) {
-        queryParams.product = product;
-    }
-
-    if (supplierId) {
-        queryParams.supplierId = supplierId;
-    }
-
     try {
-        const response = await fetch(
-            `http://31.129.33.170:4001/${endpoint}?${queryParams}`
+        const response = fetch(
+            `http://31.129.33.170:4001/${endpoint}?product=${product}&supplierId=${supplierId}`
         );
-        const data = await response.json();
-        return NextResponse.json(data);
-    } catch {
-        return NextResponse.json({ error: "Server error" }, { status: 500 });
+        const result = (await response).json();
+        return NextResponse.json(result);
+    } catch (error) {
+        return NextResponse.json(
+            { message: "Ошибка сервера" },
+            { status: 500 }
+        );
     }
 }
