@@ -15,10 +15,10 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="flex items-center justify-center h-screen bg-black text-white">
+        <div className="flex items-center justify-center h-screen bg-black text-white px-4">
             {!showMainContent ? (
                 <motion.div
-                    className="text-6xl font-bold"
+                    className="text-4xl sm:text-6xl font-bold"
                     animate={{ rotate: 360 }}
                     transition={{
                         repeat: Infinity,
@@ -29,22 +29,22 @@ export default function Home() {
                     MARKET-EYE
                 </motion.div>
             ) : (
-                <div className="flex flex-col items-center space-y-6">
-                    <h1 className="text-3xl font-semibold">
+                <div className="flex flex-col items-center space-y-6 text-center">
+                    <h1 className="text-2xl sm:text-3xl font-semibold">
                         Добро пожаловать в MARKET-EYE
                     </h1>
-                    <p className="text-lg">
+                    <p className="text-base sm:text-lg">
                         Платформа для анализа данных по товарам.
                     </p>
 
-                    <div className="space-x-4">
+                    <div className="flex flex-col sm:flex-row gap-4 mt-4">
                         <Link href={configForLink.linkToUploadprice}>
-                            <p className="py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">
+                            <p className="py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition text-center">
                                 Загрузить прайс
                             </p>
                         </Link>
                         <Link href={configForLink.linkToProductinfo}>
-                            <p className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 transition">
+                            <p className="py-2 px-4 bg-green-500 text-white rounded-md hover:bg-green-600 transition text-center">
                                 Поиск товаров
                             </p>
                         </Link>
