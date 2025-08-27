@@ -40,7 +40,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
     ) => {
         try {
             const response = await fetch(
-                `http://localhost:4001/productHistory?productId=${productId}&supplierId=${supplierId}`
+                `http://31.129.33.170:4001/productHistory?productId=${productId}&supplierId=${supplierId}`
             );
 
             if (!response.ok) {
@@ -67,7 +67,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
             if (!selectedProduct) {
                 const timeout = setTimeout(() => {
                     fetch(
-                        `http://localhost:4001/product?product=${product}&supplierId=${value}`
+                        `http://31.129.33.170:4001/product?product=${product}&supplierId=${value}`
                     )
                         .then((res) => res.json())
                         .then((data) => {
