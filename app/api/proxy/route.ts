@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export default async function handler(req: NextRequest, res: NextResponse) {
-    const queryParams: any = {};
+type QueryParams = {
+    [key: string]: string;
+};
+
+export default async function handler(req: NextRequest) {
+    const queryParams: QueryParams = {};
     const { searchParams } = new URL(req.url);
     const endpoint = searchParams.get("endpoint");
     const product = searchParams.get("product");
