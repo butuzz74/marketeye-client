@@ -21,7 +21,10 @@ async function uploadPrice(state: void | null, data: FormData) {
 }
 
 async function UploadPricePage() {
-    const responseSuppliers = await fetch(`http://31.129.33.170:4001/supplier`);
+    const responseSuppliers = await fetch(
+        `http://31.129.33.170:4001/supplier`,
+        { cache: "no-store" }
+    );
     if (responseSuppliers.status === 500)
         throw new Error(
             `Ошибка ${responseSuppliers.status} - ${responseSuppliers.statusText}`
