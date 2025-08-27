@@ -40,7 +40,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
     ) => {
         try {
             const response = await fetch(
-                `http://31.129.33.170:4001/productHistory?productId=${productId}&supplierId=${supplierId}`
+                `${process.env.NEXT_PUBLIC_BASE_URL}/api/productHistory?productId=${productId}&supplierId=${supplierId}`
             );
 
             if (!response.ok) {
@@ -67,7 +67,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
             if (!selectedProduct) {
                 const timeout = setTimeout(() => {
                     fetch(
-                        `${process.env.NEXT_PUBLIC_BASE_URL}/api/proxy/endpoint=product&product=${product}&supplierId=${value}`
+                        `${process.env.NEXT_PUBLIC_BASE_URL}/api/product?product=${product}&supplierId=${value}`
                     )
                         .then((res) => res.json())
                         .then((data) => {
@@ -85,26 +85,6 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
                                 setError("Неизвестная ошибка");
                             }
                         });
-
-                    // fetch(
-                    //     `http://31.129.33.170:4001/product?product=${product}&supplierId=${value}`
-                    // )
-                    //     .then((res) => res.json())
-                    //     .then((data) => {
-                    //         if (data.error) {
-                    //             setError(data.error);
-                    //         } else {
-                    //             setError(null);
-                    //             setSelectedProducts(data);
-                    //         }
-                    //     })
-                    //     .catch((error) => {
-                    //         if (error instanceof Error) {
-                    //             setError(error.message);
-                    //         } else {
-                    //             setError("Неизвестная ошибка");
-                    //         }
-                    //     });
                 }, 400);
 
                 return () => clearTimeout(timeout);
