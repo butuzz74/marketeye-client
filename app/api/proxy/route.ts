@@ -1,20 +1,27 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
-export default async function handler(
-    req: NextApiRequest,
-    res: NextApiResponse
-) {
-    const { endpoint, ...params } = req.query;
+export default async function handler(req: NextRequest, res: NextResponse) {
+    const queryParams: any = {};
+    const { searchParams } = new URL(req.url);
+    const endpoint = searchParams.get("endpoint");
+    const product = searchParams.get("product");
+    const supplierId = searchParams.get("supplierId");
 
-    const queryParams = new URLSearchParams(params as Record<string, string>);
+    if (product) {
+        queryParams.product = product;
+    }
+
+    if (supplierId) {
+        queryParams.supplierId = supplierId;
+    }
 
     try {
         const response = await fetch(
             `http://31.129.33.170:4001/${endpoint}?${queryParams}`
         );
         const data = await response.json();
-        res.status(200).json(data);
+        return NextResponse.json(data);
     } catch {
-        res.status(500).json({ error: "Server error" });
+        return NextResponse.json({ error: "Server error" }, { status: 500 });
     }
 }
