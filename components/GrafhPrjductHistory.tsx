@@ -49,6 +49,7 @@ const GraphProductHistory = ({ data }: { data: ProductHistory[] }) => {
         payload,
     }) => {
         if (active && payload && payload.length) {
+            if (!active || !payload || !payload.length) return null;
             const { price, date } = payload[0].payload;
             return (
                 <div className="bg-white p-2 border rounded shadow text-gray-700">
@@ -69,7 +70,11 @@ const GraphProductHistory = ({ data }: { data: ProductHistory[] }) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
                 <YAxis />
-                <Tooltip content={<CustomTooltip />} />
+                <Tooltip
+                    content={<CustomTooltip />}
+                    isAnimationActive={false}
+                    animationDuration={0}
+                />
                 <Legend />
                 <Bar
                     dataKey="price"
