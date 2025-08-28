@@ -69,6 +69,7 @@ function UploadPriceForm({ action, suppliers }: ServerActionUploadPrice) {
                     type="date"
                     id="price-date"
                     name="price-date"
+                    placeholder="Укажите дату если не указана в имени прайса"
                     className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                 />
             </div>

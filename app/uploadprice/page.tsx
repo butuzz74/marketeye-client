@@ -37,7 +37,7 @@ async function UploadPricePage() {
             <h1 className="text-4xl font-semibold text-center mb-6 text-white">
                 Загрузить прайс
             </h1>
-            <div className="bg-white p-8 rounded-lg shadow-lg w-full sm:w-96">
+            <div className="bg-white p-8 rounded-lg shadow-lg w-[90%] sm:w-[50%] md:w-[35%]">
                 <UploadPriceForm
                     action={uploadPrice}
                     suppliers={Array.isArray(suppliers) ? suppliers : []}

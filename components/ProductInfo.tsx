@@ -96,7 +96,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
 
     return (
         <div className="flex flex-col">
-            <div className="grid grid-cols-1 md:grid-cols-3 h-full gap-10 px-8 mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-3 h-full gap-10 px-3 sm:px-8 mt-10 mb-2 sm:mb-0">
                 <div className="bg-white p-8 rounded-xl shadow-xl space-y-8">
                     {suppliers.length !== 0 ? (
                         <div>
@@ -180,7 +180,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
                 selectedProducts?.length !== 0 &&
                 productHistory &&
                 productHistory?.length !== 0 && (
-                    <div className="w-full flex justify-center mt-16">
+                    <div className="w-full flex justify-center mt-16 mb-4">
                         <Link href="/uploadprice">
                             <p className="py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition mx-3">
                                 Загрузить новый прайс
