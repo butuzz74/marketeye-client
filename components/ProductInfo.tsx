@@ -8,6 +8,7 @@ import ProductCard from "./ProductCard";
 import GrahpProductHistory from "./GrafhPrjductHistory";
 import ProgressiveSearchInput from "./ProgressiveSearchInput";
 import { useError } from "@/context/ErrorContext";
+import { useAutoScroll } from "@/hooks/useAutoScroll";
 
 function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
     const { setError } = useError();
@@ -22,6 +23,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
         ProductHistory[] | null
     >(null);
 
+    const endRef = useAutoScroll(productHistory);
     const handleSearchProduct = (value: string) => {
         setProduct(value);
         setSelectedProduct(null);
@@ -95,7 +97,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
     }, [product]);
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col overflow-visible">
             <div className="grid grid-cols-1 md:grid-cols-3 h-full gap-10 px-3 sm:px-8 mt-10 mb-2 sm:mb-0">
                 <div className="bg-white p-8 rounded-xl shadow-xl space-y-8">
                     {suppliers.length !== 0 ? (
@@ -173,6 +175,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
                 {productHistory && productHistory.length !== 0 && (
                     <div className="bg-white p-8 rounded-xl shadow-xl max-w-screen h-96">
                         <GrahpProductHistory data={productHistory} />
+                        <div ref={endRef} />
                     </div>
                 )}
             </div>
