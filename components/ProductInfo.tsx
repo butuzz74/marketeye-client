@@ -65,9 +65,11 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
     useEffect(() => {
         if (product.length < 3) {
             setSelectedProducts([]);
+            setProductHistory(null);
             return;
         } else {
             if (!selectedProduct) {
+                setProductHistory(null);
                 const timeout = setTimeout(() => {
                     fetch(
                         `${process.env.NEXT_PUBLIC_BASE_URL}/api/product?product=${product}&supplierId=${value}`,
