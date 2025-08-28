@@ -56,7 +56,6 @@ function UploadPriceForm({ action, suppliers }: ServerActionUploadPrice) {
                     required
                     placeholder="Выберите поставщика или введите название нового"
                     className="w-full mt-2 text-black"
-                    isSearchable={false}
                 />
             </div>
             <div>

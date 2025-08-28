@@ -127,6 +127,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
                                 }
                                 placeholder="Выберите поставщика"
                                 className="w-full mt-2 text-black"
+                                isSearchable={false}
                             />
                         </div>
                     ) : (
