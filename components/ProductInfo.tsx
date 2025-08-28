@@ -170,7 +170,7 @@ function ProductInfo({ suppliers }: { suppliers: Supplier[] }) {
                     )}
                 </div>
                 {productHistory && productHistory.length !== 0 && (
-                    <div className="bg-white p-8 rounded-xl shadow-xl">
+                    <div className="bg-white p-8 rounded-xl shadow-xl max-w-screen h-96">
                         <GrahpProductHistory data={productHistory} />
                     </div>
                 )}

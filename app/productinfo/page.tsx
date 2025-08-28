@@ -12,7 +12,7 @@ async function ProductInfoPage() {
     const suppliers: Supplier[] = await responseSuppliers.json();
 
     return (
-        <div className="flex flex-col justify-start items-center bg-black text-white h-screen">
+        <div className="flex flex-col justify-start items-center bg-black text-white min-h-screen">
             <h1 className="text-4xl font-semibold text-center mb-6 text-white mt-12">
                 Получить данные о товарах Ваших поставщиков
             </h1>
